@@ -3,24 +3,22 @@ const search = document.querySelector('input');
 const messageOne = document.querySelector('#message-one');
 const messageTwo = document.querySelector('#message-two');
 
-
 weatherForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const location = search.value;
+    const location = search.value
 
-    messageOne.textContent = 'Loading...';
-    messageTwo.textContent = '';
+    messageOne.textContent = 'Loading...'
+    messageTwo.textContent = ''
 
-    fetch(`/weather?address=`).then((response) => {
+    fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {
             if (data.error) {
-                messageOne.textContent = data.error;
+                messageOne.textContent = data.error
             } else {
-                messageOne.textContent = data.location;
-                messageTwo.textContent = data.forecast;
+                messageOne.textContent = data.location
+                messageTwo.textContent = data.forecast
             }
         })
     })
-   
 })
